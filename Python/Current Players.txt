@@ -1,0 +1,32 @@
+account : not logged in  (No account specified)
+players : 29 humans, 0 bots (32 max)
+edicts  : 1193 used of 2048 max
+#    318 "DomdeDuck"         [U:1:452578156]     26:31       65    0 spawning
+tags    : alltalk,arena,ba_,fastdl,freeitems,gamemode,increased_maxplayers,jail,jail_,jailbreak,jb,nocrits,wln.tf,wonderland,wonderland.t
+#    323 "Bi"                [U:1:1081415703]    20:11       64    0 spawning
+# userid name                uniqueid            connected ping loss state
+#    304 "The Holy Watermelon" [U:1:1036962386]  48:00       88    0 spawning
+#    319 "QωQ Xander óÓÒò" [U:1:881508162]  24:07       52    0 active
+#    276 ":osha:"            [U:1:1103849368]    01:28:35    73    0 active
+#    288 "Zet"               [U:1:467208018]     01:07:37   205    0 spawning
+#    275 "bongo"             [U:1:359363250]     01:29:52    80    0 active
+#    316 "Kanada"            [U:1:1053209803]    27:11       92    0 active
+#    309 "king monke"        [U:1:920928474]     43:27      195    0 active
+#    321 "John Connor"       [U:1:140209943]     20:49       98    0 active
+#    331 "Dimes 4 Crimes"    [U:1:1240922673]    12:34      100    1 active
+#     50 "Sans"              [U:1:1259644285]    05:37:33    85    0 spawning
+#    312 "haxton sale"       [U:1:133973895]     41:32      116    0 active
+#    340 "Beef_Taco54434"    [U:1:1270883022]    03:50       74    0 spawning
+#    326 "spi ngtf2 gamigan" [U:1:847354966]     18:58       77    0 active
+#    150 "Friendly Gentleman" [U:1:209677855]    03:55:52    74    0 spawning
+#    334 "Portal"            [U:1:896193003]     11:45       66    0 active
+#    341 "a box of water"    [U:1:473688013]     03:46       76    0 spawning
+#    337 "ShadowPlays"       [U:1:859026474]     09:06      172    0 active
+#    199 "The Squire"        [U:1:1039972796]    03:03:13    83    0 spawning
+#    302 "bread"             [U:1:467720134]     49:26       86    0 active
+#    332 "GlobeX"            [U:1:1236161227]    12:25       86    0 active
+#    262 "areo"              [U:1:1161908807]    01:47:11   180    0 active
+#    333 "aaaaaa"            [U:1:363821296]     12:11       83    0 active
+#    339 "JoezCool2"         [U:1:60061179]      06:50       75    0 active
+#    287 "Madawg"            [U:1:207135065]     01:08:56   109    0 active
+#    346 "us"                [U:1:452543318]     02:47      120    0 spawning
