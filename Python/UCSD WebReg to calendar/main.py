@@ -12,7 +12,7 @@ D = MDY()
 first_day_of_classes = "01/08/2024"
 last_day_of_classes = "03/15/2024"
 
-gc = GoogleCalendar(credentials_path="credentials.json")
+gc = GoogleCalendar(credentials_path="UCSD WebReg to calendar/credentials.json")
 
 def getCalendarId(name):
     for calendar in gc.get_calendar_list():
@@ -53,15 +53,16 @@ def addEvent(name,type,startTime,endTime,days,location):
     
 deleteEventsInCalendar("Classes")
 
-lines = open("Classes.txt", "r")
+lines = open("UCSD WebReg to calendar/Classes.txt", "r")
 classLines = []
 curLine = 0
 lastLine = 0
 for line in lines:
-    if line.find("FI") != -1:
-        classLines.append((lastLine, curLine))
-        lastLine = curLine+1
+    if line[0] != ' ' and curLine != 0:
+        classLines.append((lastLine, curLine-1))
+        lastLine = curLine
     curLine = curLine + 1
+classLines.append((lastLine, curLine-1))
 
 for i in range(0,len(classLines)):
     currentClass = dataparser.ClassInfo(classLines[i][0], classLines[i][1])

@@ -9,7 +9,7 @@ class ClassInfo:
         self.endLine = endLine
         
     def getData(self):
-        lines =  open("Classes.txt", "r")
+        lines =  open("UCSD WebReg to calendar/Classes.txt", "r")
         lineNum = 0
         for line in lines:
             if lineNum in range(self.startLine, self.endLine+1):
