@@ -9,7 +9,7 @@ class ClassInfo:
         self.endLine = endLine
         
     def getData(self):
-        lines =  open("UCSD WebReg to calendar/Classes.txt", "r")
+        lines =  open("Classes.txt", "r")
         lineNum = 0
         for line in lines:
             if lineNum in range(self.startLine, self.endLine+1):
@@ -22,37 +22,28 @@ class ClassInfo:
        if Time[len(Time)-1] == "p" and int(hour) != 12:
            hour = str(int(hour) + 12)
        return f"{hour}:{minutes}"
-   
-    def fixDays(self, text):
-        days = []
-        targets = [["M", "Tu", "W", "Th", "F"], [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]]
-        for i in range(5):
-            if text.find(targets[0][i]) != -1:
-                days.append(targets[1][i])
-        return days
-        
             
     def extractLine(self, line):
         matches = []
         lastIndex = 0
-        while (lastIndex != -1):
+        if not line.strip() or line.find("Expand:") != -1: # Skip if line doesnt contain any characters or has a stupid expand button
+            return
+        while (lastIndex != -1): # This will pick out all the words in between '\t'
             curIndex = line.find("\t", lastIndex + 1)
             matches.append(line[lastIndex:curIndex].strip())
             lastIndex = curIndex
-        # print(matches)
-        if line.find("LE") != -1:
-            self.className = matches[0]
+        print(matches)
+        # if line.find("LE") != -1:
+        if (line[0] != ' '):
+            self.className = matches[0].replace("   ", " ")
         type = matches[3]
         if line.find("FI") != -1:
-            days = re.findall("\d+/\d+/\d+$" ,matches[7])
+            days = re.findall("\d+/\d+/\d+$" ,matches[7])[0]
         else:
-            days = self.fixDays(matches[7])
+            days = matches[7]
         startTime = self.convertTo24hr(matches[8][:matches[8].find("-")])
         endTime = self.convertTo24hr(matches[8][matches[8].find("-")+1:])
         location = matches[9] + " " + matches[10]
         
         self.eventInfo.append({"className": self.className, "type":type, "days":days, "startTime":startTime, "endTime":endTime, "location":location})
     
-# test = ClassInfo(0,2)
-# test.getData()
-# print(test.eventInfo[2]["days"])

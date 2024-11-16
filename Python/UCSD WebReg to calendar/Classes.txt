@@ -1,12 +1,30 @@
-ECE 140A 	The Art of Product Eng I	A00	LE	Khoshabeh, Ramsin +	L	4.00	TuTh	11:00a-12:20p	PCYNH	122	Enrolled	
- 		A03	LA		 	 	F	12:00p-1:50p	EBU1	B538	 	 
- 	Final Exam	 	FI		 	 	Th 03/21/2024	11:30a-2:29p	TBA	TBA	 	 
-COGS   1  	Introduction to Cognitive Sci	A00	LE	Kiyonaga, Anastasia	L	4.00	MWF	11:00a-11:50a	PRICE	THTRE	Waitlist (3)	
- 		A01	DI		 	 	M	4:00p-4:50p	MANDE	B-150	 	 
- 	Final Exam	 	FI		 	 	M 03/18/2024	11:30a-2:29p	TBA	TBA	 	 
-ECE 101  	Linear Systems Fundamentals	A00	LE	Baghdadchi, Saharnaz	L	4.00	TuTh	9:30a-10:50a	CENTR	119	Enrolled	
- 		A01	DI		 	 	F	12:00p-12:50p	PODEM	1A18	 	 
- 	Final Exam	 	FI		 	 	Tu 03/19/2024	8:00a-10:59a	TBA	TBA	 	 
-ECE 111  	Advanced Digital Design Proj	A00	LE	Eldon, John	L	4.00	MWF	9:00a-9:50a	CENTR	115	Enrolled	
- 		A01	DI		 	 	Tu	2:00p-2:50p	RCLAS	R02	 	 
- 	Final Exam	 	FI		 	 	W 03/20/2024	8:00a-10:59a	TBA	TBA	 
+
+CSE 118  	Ubiquitous Computing	A00	LE	Weibel, Nadir	L	4.00	Th	2:00p-3:20p	EBU3B	B240	Enrolled	
+ 		A00	LE		 	 	Tu	2:00p-3:20p	EBU3B	2154	 	 
+ 	
+Expand:  Discussion
+ 	 		 	 	 	 			 	 
+ 		 	DI		 	 	Th	3:30p-4:20p	EBU3B	B240	 	 
+ 	
+Expand:  Lab
+ 	 		 	 	 	 			 	 
+ 		 	LA		 	 	Tu	3:30p-4:20p	EBU3B	B240	 	 
+CSE 176E 	Robotic Sys Design & Implemnt	A00	LE	Swanson, Steven James	L	4.00	TuTh	9:30a-10:50a	SME	304	Enrolled	
+ 		A01	LA		 	 	TuTh	11:00a-12:20p	SME	304	 	 
+ 	Final Exam	 	FI		 	 	Th 12/12/2024	8:00a-10:59a	TBA	TBA	 	 
+ECE 102  	Intro/Active Circuit Design	A00	LE	Hsueh, Tzu-Chien	L	4.00	MWF	12:00p-12:50p	FAH	1101	Enrolled	
+ 	
+Expand:  Discussion
+ 	 		 	 	 	 			 	 
+ 		 	DI		 	 	M	2:00p-2:50p	CENTR	214	 	 
+ 	
+Expand:  Lab
+ 	 		 	 	 	 			 	 
+ 		 	LA		 	 	M	5:00p-8:00p	WLH	2212	 	 
+ 		 	LA		 	 	Tu	5:00p-8:00p	WLH	2212	 	 
+ 		 	LA		 	 	W	5:00p-8:00p	WLH	2212	 	 
+ 		 	LA		 	 	Th	5:00p-8:00p	WLH	2212	 	 
+ 	Final Exam	 	FI		 	 	Th 12/12/2024	11:30a-2:29p	TBA	TBA	 	 
+ECE 143  	Programming for Data Analysis	A00	LE	Staff	L	4.00	WF	5:00p-6:20p	PCYNH	122	Enrolled	
+ 	Final Exam	 	FI		 	 	Th 12/12/2024	7:00p-9:59p	TBA	TBA	 	 
+ECE 196  	Eng Hands-on Group Project	B00	LA	Morris, Karcher William	L	4.00	MW	4:00p-6:50p	SME	306	Planned	

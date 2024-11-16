@@ -1,80 +1,72 @@
-from gcsa.event import Event
-from gcsa.calendar import Calendar
-from gcsa.google_calendar import GoogleCalendar
-from gcsa.recurrence import *
-
-from beautiful_date import *
 import dataparser as dataparser
-from datetime import timedelta
-D = MDY()
+import calendarhelper as ch
+
+"""
+Configuring Google Calendar AUTH 
+1) Go here: https://console.cloud.google.com/apis/credentials?project=ucsd-web-reg-2
+2) Download Web Client 1's credentials.json file and put in project directory 
+3) DELETE token.pickle file!!!
+3) (If not already done) Add "http://localhost:8080/" to Authorized redirect URIs
+
+"""
 
 # Copy and paste directly from webreg list into Classes.txt
-first_day_of_classes = "01/08/2024"
-last_day_of_classes = "03/15/2024"
-
-gc = GoogleCalendar(credentials_path="UCSD WebReg to calendar/credentials.json")
-
-def getCalendarId(name):
-    for calendar in gc.get_calendar_list():
-        if calendar.summary == name:
-            return calendar.id
-
-def addTestCalendar():
-    calendar = Calendar("test calendar", description = "used for testing")
-    calendar = gc.add_calendar(calendar)
-
-def deleteEventsInCalendar(calendarname): # Present day -> One year forward; Only delete Events made by bot
-    for event in gc.get_events(calendar_id=getCalendarId(calendarname)):
-        if event.description == "Created by Python!":
-            print(f"deleting {event.summary}")
-            gc.delete_event(event, calendar_id=getCalendarId(calendarname))
-        
-def addEvent(name,type,startTime,endTime,days,location): 
-    if type != "FI":
-        # adjusted_first_day_of_classes = int(re.findall("/\d\d/", first_day_of_classes)[0])
-        start = datetime.strptime(f"{first_day_of_classes} {startTime}", "%m/%d/%Y %H:%M")
-        end = datetime.strptime(f"{first_day_of_classes} {endTime}", "%m/%d/%Y %H:%M")
-        
-        start = start + timedelta(days = [MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY].index(days[0]))
-        end = end + timedelta(days = [MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY].index(days[0]))
-        
-        until = datetime.strptime(last_day_of_classes, "%m/%d/%Y") + timedelta(days = 1)
-        event = Event(f'{name} {type}', start=start, end=end, recurrence = Recurrence.rule(freq= WEEKLY, by_week_day = days, until = until), description="Created by Python!", location=location)
-        event = gc.add_event(event)
-        event = gc.move_event(event, getCalendarId("Classes"))
-        print(f"Successfully created {event.summary}")
-    else:
-        start = datetime.strptime(f"{days[0]} {startTime}", "%m/%d/%Y %H:%M")
-        end = datetime.strptime(f"{days[0]} {endTime}", "%m/%d/%Y %H:%M")
-        event = Event(f'{name} FINAL', start=start, end=end, description="Created by Python!", location=location)
-        event = gc.add_event(event)
-        event = gc.move_event(event, getCalendarId("Classes"))
-        print(f"Successfully created {event.summary}")
+first_day_of_classes = "09/26/2024"
+last_day_of_classes = "12/06/2024"
     
-deleteEventsInCalendar("Classes")
+mycalendar = ch.calendarHelper(first_day_of_classes, last_day_of_classes) 
 
-lines = open("UCSD WebReg to calendar/Classes.txt", "r")
-classLines = []
-curLine = 0
-lastLine = 0
-for line in lines:
-    if line[0] != ' ' and curLine != 0:
-        classLines.append((lastLine, curLine-1))
-        lastLine = curLine
-    curLine = curLine + 1
-classLines.append((lastLine, curLine-1))
-
-for i in range(0,len(classLines)):
-    currentClass = dataparser.ClassInfo(classLines[i][0], classLines[i][1])
-    currentClass.getData()
-    for x in range(0, len(currentClass.eventInfo)):
-        addEvent(currentClass.eventInfo[x]["className"], 
-                 currentClass.eventInfo[x]["type"], 
-                 currentClass.eventInfo[x]["startTime"], 
-                 currentClass.eventInfo[x]["endTime"],
-                 currentClass.eventInfo[x]["days"],
-                 currentClass.eventInfo[x]["location"],
-                 )
+def formatRawClassData():
+    lines = open("Classes.txt", "r")
+    classLines = [] # An array of tuples that give the line numbers pertaining to each class
+    curLine = 0
+    lastLine = 0
+    foundFirstLine = False
+    
+    for line in lines:
+        if foundFirstLine == False: # Make sure we find the first line (account for new lines before the first class)
+            if (line[0] == '\n'): 
+                lastLine = curLine = curLine + 1
+                continue
+            else: # Its not a newline, its actually something!
+                foundFirstLine = True
+                curLine = curLine + 1
+                continue
         
-# addEvent("ECE 10000", "LE", "9:00", "10:00", [MONDAY,WEDNESDAY], "some location")
-# addEvent("ECE 10000", "FI", "9:00", "10:00", "12/30/2023", "some location")
+        if line[0] != ' ' and line.find("Expand:")== -1: # This is true if we find the NEXT class
+            classLines.append((lastLine, curLine-1))
+            lastLine = curLine
+        curLine = curLine + 1
+
+    classLines.append((lastLine, curLine-1))
+    print(classLines)
+    
+    lines = open("Events.txt", "a")
+    for i in range(0,len(classLines)):
+        currentClass = dataparser.ClassInfo(classLines[i][0], classLines[i][1])
+        currentClass.getData()
+        for eventCharacteristic in currentClass.eventInfo:
+            lines.write(f"{eventCharacteristic['className']}, {eventCharacteristic['type']}, {eventCharacteristic['startTime']}, {eventCharacteristic['endTime']}, {eventCharacteristic['days']}, {eventCharacteristic['location']}\n")
+    lines.write("# ----------------------Custom Definitions Below------------------------\n")
+
+def addClassesToCalendar():
+    lines = open("Events.txt", "r")
+    for line in lines:
+        if line[0] == '#': # Skip if there's a #
+            continue 
+        lastIndex = 0
+        info = []
+        while (lastIndex != -1):
+            curIndex = line.find(",", lastIndex + 1)
+            info.append(line[lastIndex:curIndex].strip())
+            if curIndex != -1:
+                lastIndex = curIndex+1
+            else:
+                lastIndex = curIndex
+        mycalendar.addEvent(info[0], info[1], info[2], info[3], info[4], info[5])
+
+# formatRawClassData()
+# mycalendar.deleteEventsInCalendar("Classes")
+mycalendar.addEvent("penis", "LE", "13:00", "14:00", "MWF", "sasha's house")
+# addClassesToCalendar()
+
