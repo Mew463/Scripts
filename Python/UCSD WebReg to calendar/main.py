@@ -5,19 +5,18 @@ import calendarhelper as ch
 Configuring Google Calendar AUTH 
 1) Go here: https://console.cloud.google.com/apis/credentials?project=ucsd-web-reg-2
 2) Download Web Client 1's credentials.json file and put in project directory 
-3) DELETE token.pickle file!!!
-3) (If not already done) Add "http://localhost:8080/" to Authorized redirect URIs
-
+3) DELETE token.pickle file!!! SO WEB BROWSER REAUTHENTICATES
+4) (If not already done) Add "http://localhost:8080/" to Authorized redirect URIs
 """
 
 # Copy and paste directly from webreg list into Classes.txt
-first_day_of_classes = "09/26/2024"
-last_day_of_classes = "12/06/2024"
+first_day_of_classes = "01/06/2025"
+last_day_of_classes = "03/14/2025"
     
 mycalendar = ch.calendarHelper(first_day_of_classes, last_day_of_classes) 
 
 def formatRawClassData():
-    lines = open("Classes.txt", "r")
+    lines = open("TextFiles/RawClasses.txt", "r")
     classLines = [] # An array of tuples that give the line numbers pertaining to each class
     curLine = 0
     lastLine = 0
@@ -41,7 +40,7 @@ def formatRawClassData():
     classLines.append((lastLine, curLine-1))
     print(classLines)
     
-    lines = open("Events.txt", "a")
+    lines = open("TextFiles/Events.txt", "a")
     for i in range(0,len(classLines)):
         currentClass = dataparser.ClassInfo(classLines[i][0], classLines[i][1])
         currentClass.getData()
@@ -50,7 +49,7 @@ def formatRawClassData():
     lines.write("# ----------------------Custom Definitions Below------------------------\n")
 
 def addClassesToCalendar():
-    lines = open("Events.txt", "r")
+    lines = open("TextFiles/Events.txt", "r")
     for line in lines:
         if line[0] == '#': # Skip if there's a #
             continue 
@@ -67,6 +66,5 @@ def addClassesToCalendar():
 
 # formatRawClassData()
 # mycalendar.deleteEventsInCalendar("Classes")
-mycalendar.addEvent("penis", "LE", "13:00", "14:00", "MWF", "sasha's house")
-# addClassesToCalendar()
+addClassesToCalendar()
 

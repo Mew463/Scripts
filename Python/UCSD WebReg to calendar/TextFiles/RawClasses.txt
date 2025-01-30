@@ -1,0 +1,15 @@
+ECE 141A 	Software Foundations I	A00	LE	Gessner, Richard K.	L	4.00	TuTh	2:00p-3:20p	MOS	0204	Enrolled	
+ 		A01	LA		 	 	M	4:00p-4:50p	PODEM	1A20	 	 
+ 	Final Exam	 	FI		 	 	Th 03/20/2025	3:00p-5:59p	TBA	TBA	 	 
+ECE 148  	Intro to Autonomous Vehicles	A00	LE	Silberman, Jack	L	4.00	TuTh	5:00p-6:20p	SME	306	Enrolled	
+ 		A01	LA		 	 	TuTh	6:30p-7:50p	SME	306	 	 
+ECE 191  	Engineering Group Design Proj	A00	LE	Zhang, Xinyu	L	4.00	MW	2:00p-3:20p	EBU1	2315	Enrolled	
+ 	Final Exam	 	FI		 	 	M 03/17/2025	3:00p-5:59p	TBA	TBA	 	 
+ECE 260B 	VLSI Integr Cmputing Circuitry	A00	LE	Kang, Mingu	L	4.00	TuTh	12:30p-1:50p	CENTR	115	Enrolled	
+ 	Final Exam	 	FI		 	 	Tu 03/18/2025	11:30a-2:29p	TBA	TBA	 	 
+ECE 115  	Fast Prototyping	A00	LE	Yip, Michael	L	4.00	Tu	9:30a-12:30p	EBU1	B538	Planned	
+ 		A01	LA		 	 	Th	9:30a-12:30p	EBU1	B538	 	 
+ 	Final Exam	 	FI		 	 	Tu 03/18/2025	8:00a-10:59a	TBA	TBA
+SE 281  	3D Printable Robotics	A00	LE	Kuester, Falko	L	4.00	MWF	11:00a-11:50a	WLH	2114	Enrolled	
+ 		A01	LA		 	 	F	12:00p-12:50p	SME	141	 	 
+ 	Final Exam	 	FI		 	 	M 03/17/2025	11:30a-2:29p	TBA	TBA	 	 
